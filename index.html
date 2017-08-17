@@ -1,56 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE" /> 
-<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE" />
-<META HTTP-EQUIV="Expires" CONTENT="-1" />
-<script language="JavaScript" type="text/javascript">
-var g_cacheBuster = "__rotmg_cb=1452042685";
-</script>
+<html>
+	<head>
+		<title>Regnum - TESTING</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	
+		<script src='http://www.realmofthemadgod.com/js/rotmg.UrlLib.js'></script>
+		<link rel="icon" type="image/png" href="icon.png">
+		<script language=JavaScript>
+			var message = "";
+			function clickIE() {
+    if (document.all) {
+        (message);
+        return false;
+    }
+			}
+			
+			function clickNS(e) {
+    if (document.layers || (document.getElementById && !document.all)) {
+        if (e.which == 2 || e.which == 3) {
+            (message);
+            return false;
+        }
+    }
+			}
+			
+			if (document.layers) {
+			    document.captureEvents(Event.MOUSEDOWN);
+			    document.onmousedown = clickNS;
+			}
+			else {
+			    document.onmouseup = clickNS;
+			    document.oncontextmenu = clickIE;
+			}
+			
+			//Disabe Ctrl+U,F,F6
+			document.oncontextmenu = new Function("return false")
+			document.onkeydown = function(e) {
+        if (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 70 || e.keyCode === 83 || e.keyCode === 117)) {
+            return false;
+        } else {
+            return true;
+        }
+			};
+			
+			$(document).keypress("u",function(e) {
+  if(e.ctrlKey)
+  {
+			return false;
+			}
+			else
+			{
+			return true;
+			}
+			});
+			
+			//Disabe selection
+			function disableSelection(target){
+			if (typeof target.onselectstart!="undefined")
+			    target.onselectstart=function(){return false}
+			else if (typeof target.style.MozUserSelect!="undefined")
+			    target.style.MozUserSelect="none"
+			else 
+			    target.onmousedown=function(){return false}
+			target.style.cursor = "default"
+			}</script> <!--Srcipt-->
+			<style type="text/css">
+        html, body {
+            height: 100%;
+            margin: 0;
+			background-color: black;
+        }
 
-<style>
-body { margin: 0; padding: 0; overflow: hidden;
-background-color: #000; color: #fff; }
-:link { color: #ccf; }
-:visited { color: #fcf; }
-.footer { margin: 16px auto; width: 416px; }
-.footer .studio { float: left; margin-right: 24px; }
-.footer .studio.kabam { float: left; margin-top: 7px; }
-.footer .studio.last { margin-right: 0px; }
-.KBPAY_IframeDialogCurtain {
-  position: absolute;
-  width: 2000px;
-  top:0;
-  left:0;
-  background-color:#000;
-  -moz-opacity:0.3;
-  opacity:.30;
-  filter:alpha(opacity=30);
-  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
-}
-.KBPAY_IframeDialog {
-  position: absolute;
-}
-</style>
-<script language="JavaScript" type="text/javascript">
-<!--
-// -----------------------------------------------------------------------------
-// Globals
-// Major version of Flash required
-var requiredMajorVersion = 11;
-// Minor version of Flash required
-var requiredMinorVersion = 2;
-// Minor version of Flash required
-var requiredRevision = 0;
-// -----------------------------------------------------------------------------
-// -->
-</script>
+		#wrapper{
+			/*top: 50%;
+			margin-top: -300px;
+			position: relative;*/
+		}
+		p {
+			color:white;
+		}
+		
+        .arce-embed-container div,
+        .arve-embed-container iframe,
+        .arve-embed-container object,
+        .arve-embed-container embed {
+            position: relative;
+            top: 20%;
+        }
+    </style>
+    <!--[if lte IE 6]>
+        <style type="text/css">
+            #container { height: 100%; }
+        </style>
+    <![endif]-->
+	</head>
 
-<body>
-<center>
-<object width="800" height="600" data="WebMain.swf"></object>
-</center>
-</body>
+	<body>
+		<script type="text/javascript">
+		   disableSelection(document.body)
+		</script>
+		<div id="wrapper">
+        <center>
+		<div class="arve-embed-container">
+				<embed src="rotmg.swf" quality="medium" bgcolor="#000000"
+				width="800" height="600" name="rotmg" align="middle"
+				play="true"
+				loop="false"
+				quality="medium"
+				wmode="direct"
+				allowScriptAccess="sameDomain"
+				type="application/x-shockwave-flash"
+				pluginspage="http://www.adobe.com/go/getflashplayer">
+			</embed>
+			</div>
+		</center>
+    </div>
+	</body>
 </html>
